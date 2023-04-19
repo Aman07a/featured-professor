@@ -73,7 +73,7 @@ class FeaturedProfessor
         wp_set_script_translations(
             "featuredProfessorScript",
             "featured-professor",
-            plugin_dir_path(__FILE__) . "languages/"
+            plugin_dir_path(__FILE__) . "/languages"
         );
 
         register_block_type("ourplugin/featured-professor", [
