@@ -5,6 +5,8 @@
   Version: 1.0
   Author: Aman
   Author URI: https://www.udemy.com/user/aman-574/
+  Text Domain: featured-professor
+  Domain Path: /languages
 */
 
 if (!defined("ABSPATH")) {
@@ -46,6 +48,12 @@ class FeaturedProfessor
 
     function onInit()
     {
+        load_plugin_textdomain(
+            "featured-professor",
+            false,
+            dirname(plugin_basename(__FILE__)) . "/languages"
+        );
+
         register_meta("post", "featuredprofessor", [
             "show_in_rest" => true,
             "type" => "number",
@@ -60,6 +68,12 @@ class FeaturedProfessor
         wp_register_style(
             "featuredProfessorStyle",
             plugin_dir_url(__FILE__) . "build/index.css"
+        );
+
+        wp_set_script_translations(
+            "featuredProfessorScript",
+            "featured-professor",
+            plugin_dir_path(__FILE__) . "languages/"
         );
 
         register_block_type("ourplugin/featured-professor", [
